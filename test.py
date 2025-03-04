@@ -18,7 +18,7 @@ class TestAddFunction(unittest.TestCase):
         result = add_function('')
         self.assertEqual(result, expected_result)
 
-    def test_add_empty_string(self):
+    def test_add_single_value(self):
         expected_result = 2
         result = add_function('2')
         self.assertEqual(result, expected_result)
