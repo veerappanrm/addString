@@ -23,5 +23,10 @@ class TestAddFunction(unittest.TestCase):
         result = add_function('2')
         self.assertEqual(result, expected_result)
 
+    def test_add_multiple_value(self):
+        expected_result = 5
+        result = add_function('2,3')
+        self.assertEqual(result, expected_result)
+
 if __name__ == '__main__':
     unittest.main()
