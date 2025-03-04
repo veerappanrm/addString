@@ -3,13 +3,16 @@ import unittest
 
 def add_function(numbers):
     nums = re.split('[^-0-9]+', numbers)
-    sum = 0
+    nums = [int(num) for num in nums if num != '']
+    negative_numbers = []
     for num in nums:
-        try:
-            sum += int(num)
-        except:
-            pass
-    return sum
+        if num < 0:
+            negative_numbers.append(num)
+    
+    if negative_numbers:
+        raise f"negative numbers not allowed {",".join(negative_numbers)}"
+    
+    return sum(nums)
 
 
 class TestAddFunction(unittest.TestCase):
@@ -42,6 +45,10 @@ class TestAddFunction(unittest.TestCase):
         expected_result = 6
         result = add_function('//[***]\n1***2***3')
         self.assertEqual(result, expected_result)
+
+    def test_add_negative_numbers(self):
+        with self.assertRaises(Exception):
+            _ = add_function('-1\n2***3')
 
 if __name__ == '__main__':
     unittest.main()
